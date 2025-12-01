@@ -179,15 +179,45 @@ async function prepareProblemsDB() {
 /* ============================================================
    ARMAR PROBLEMAS
 ============================================================ */
+// function assembleProblems() {
+// problems = [];
+// function pick(arr, i) {
+// if (arr.length > 0) return arr[Math.floor(Math.random() * arr.length)];
+// return fallbackGens[i % fallbackGens.length]();
+// }
+// for (let i = 0; i < 3; i++) problems.push(pick(problemsDB.easy, 0));
+// for (let i = 0; i < 3; i++) problems.push(pick(problemsDB.medium, 1));
+// for (let i = 0; i < 3; i++) problems.push(pick(problemsDB.hard, 2));
+// }
+
 function assembleProblems() {
   problems = [];
-  function pick(arr, i) {
-    if (arr.length > 0) return arr[Math.floor(Math.random() * arr.length)];
-    return fallbackGens[i % fallbackGens.length]();
+
+  function pickUnique(arr, count, fallbackIndex) {
+    // Si hay suficientes problemas → se mezclan y se toman sin repetir
+    if (arr.length >= count) {
+      const shuffled = [...arr].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, count);
+    }
+
+    // Si NO hay suficientes → usar todos y completar con generadores
+    const needed = count - arr.length;
+    const result = [...arr];
+
+    for (let i = 0; i < needed; i++) {
+      result.push(fallbackGens[fallbackIndex % fallbackGens.length]());
+    }
+    return result;
   }
-  for (let i = 0; i < 3; i++) problems.push(pick(problemsDB.easy, 0));
-  for (let i = 0; i < 3; i++) problems.push(pick(problemsDB.medium, 1));
-  for (let i = 0; i < 3; i++) problems.push(pick(problemsDB.hard, 2));
+
+  // 3 fáciles
+  problems.push(...pickUnique(problemsDB.easy, 3, 0));
+
+  // 3 intermedios
+  problems.push(...pickUnique(problemsDB.medium, 3, 1));
+
+  // 3 difíciles
+  problems.push(...pickUnique(problemsDB.hard, 3, 2));
 }
 
 /* ============================================================
@@ -281,12 +311,52 @@ function startLevel() {
 /* ============================================================
    SUBMIT
 ============================================================ */
+// document.getElementById("submitBtn").onclick = () => {
+// stopTimer();
+// 
+// if (currentLevel <= LEVELS) {
+// const p = problems[currentLevel - 1];
+// const your = inputAnswer.trim();
+// const correct = (your === String(p.ans));
+// const elapsed = Math.floor((Date.now() - startTime) / 1000);
+// let bonus = 0;
+// 
+// if (correct) {
+// if (elapsed <= 30) bonus = 30;
+// else if (elapsed <= 60) bonus = 20;
+// else bonus = 10;
+// 
+// totalPoints += 50;
+// totalBonus += bonus;
+// dialogueUI.textContent = `¡Correcto! +50 pts — Bonus +${bonus}`;
+// } else { dialogueUI.textContent = `Incorrecto.`; }
+// 
+//actualiza inmediatamente el HUD de puntos
+// updateHUD_Points();
+// 
+// // levelResults.push({ level: currentLevel, q: p.q, your: your || "(vacío)", correct, correctAns: p.ans, pts: correct ? 50 : 0, bonus });
+// currentLevel++;
+// 
+// setTimeout(() => { currentLevel <= LEVELS ? startLevel() : checkFinalUnlock(); }, 800);
+// }
+// };
 document.getElementById("submitBtn").onclick = () => {
+
+  // VALIDACIÓN: no permite enviar vacío ni no-números
+  const val = inputAnswer.trim();
+  if (val === "" || isNaN(Number(val))) {
+    dialogueUI.textContent = "⚠ Ingresa un número antes de enviar.";
+    answerValue.style.color = "red";
+    setTimeout(() => answerValue.style.color = "", 600);
+    return;
+  }
+
+  // Si hay número válido, continúa normalmente
   stopTimer();
 
   if (currentLevel <= LEVELS) {
     const p = problems[currentLevel - 1];
-    const your = inputAnswer.trim();
+    const your = val;
     const correct = (your === String(p.ans));
     const elapsed = Math.floor((Date.now() - startTime) / 1000);
     let bonus = 0;
@@ -298,17 +368,15 @@ document.getElementById("submitBtn").onclick = () => {
 
       totalPoints += 50;
       totalBonus += bonus;
-      dialogueUI.textContent = `¡Correcto! +50 pts — Bonus +${bonus}`;
+      dialogueUI.textContent = `¡Correcto! + 50 pts — Bonus + ${bonus}`;
     } else { dialogueUI.textContent = `Incorrecto.`; }
-
-    // actualiza inmediatamente el HUD de puntos
-    updateHUD_Points();
 
     levelResults.push({ level: currentLevel, q: p.q, your: your || "(vacío)", correct, correctAns: p.ans, pts: correct ? 50 : 0, bonus });
     currentLevel++;
 
     setTimeout(() => { currentLevel <= LEVELS ? startLevel() : checkFinalUnlock(); }, 800);
   }
+
 };
 
 /* ============================================================
