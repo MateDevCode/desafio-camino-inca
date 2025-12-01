@@ -442,232 +442,388 @@ button {
 }
 
 /* *********************************************************************************************************** */
+/*  */
+/*  */
+/* /* --------------------- */
+/* 🔹 Pantallas grandes */
+/* --------------------- */
+/* @media (min-width: 1500px) { */
+/* .portrait { */
+/* width: 320px; */
+/* height: 400px; */
+/* } */
+/*  */
+/* #centerPanel { */
+/* width: 45%; */
+/* } */
+/*  */
+/* .problem-text { */
+/* font-size: 24px; */
+/* } */
+/*  */
+/* .key { */
+/* font-size: 24px; */
+/* padding: 18px; */
+/* } */
+/* } */
+/*  */
+/*  */
+/* /* --------------------- */
+/* 🔹 Tablets horizontales (1200px ↓) */
+/* --------------------- */
+/* @media (max-width: 1200px) { */
+/* #stage { */
+/* padding: 10px; */
+/* gap: 10px; */
+/* } */
+/*  */
+/* .panel { */
+/* width: 220px; */
+/* } */
+/*  */
+/* .portrait { */
+/* width: 200px; */
+/* height: 260px; */
+/* } */
+/*  */
+/* #centerPanel { */
+/* width: 55%; */
+/* } */
+/*  */
+/* .problem-card { */
+/* max-height: 380px; */
+/* } */
+/* } */
+/*  */
+/*  */
+/* /* --------------------- */
+/* 🔹 Tablets verticales (980px ↓) */
+/* --------------------- */
+/* @media (max-width: 980px) { */
+/* #hud { */
+/* font-size: 16px; */
+/* padding: 8px 12px; */
+/* } */
+/*  */
+/* #stage { */
+/* flex-direction: column; */
+/* justify-content: start; */
+/* height: auto; */
+/* } */
+/*  */
+/* .panel { */
+/* width: 100%; */
+/* } */
+/*  */
+/* .portrait { */
+/* margin: auto; */
+/* width: 200px; */
+/* height: 250px; */
+/* } */
+/*  */
+/* #centerPanel { */
+/* width: 100%; */
+/* margin-top: 10px; */
+/* } */
+/* } */
+/*  */
+/*  */
+/* /* --------------------- */
+/* 🔹 Celulares grandes (780px ↓) */
+/* --------------------- */
+/* @media (max-width: 780px) { */
+/* .menu-title { */
+/* font-size: 32px; */
+/* } */
+/*  */
+/* .menu-button.big { */
+/* font-size: 16px; */
+/* } */
+/*  */
+/* .portrait { */
+/* width: 160px; */
+/* height: 200px; */
+/* } */
+/*  */
+/* .problem-card { */
+/* padding: 16px; */
+/* max-height: 360px; */
+/* } */
+/*  */
+/* .problem-text { */
+/* font-size: 18px; */
+/* } */
+/*  */
+/* .key { */
+/* font-size: 18px; */
+/* padding: 12px; */
+/* } */
+/* } */
+/*  */
+/*  */
+/* /* --------------------- */
+/* 🔹 Celulares medianos (600px ↓) */
+/* --------------------- */
+/* @media (max-width: 600px) { */
+/* #hud { */
+/* flex-direction: column; */
+/* gap: 6px; */
+/* padding: 10px; */
+/* font-size: 14px; */
+/* } */
+/*  */
+/* .portrait { */
+/* width: 140px; */
+/* height: 180px; */
+/* } */
+/*  */
+/* #problemText { */
+/* font-size: 17px; */
+/* } */
+/*  */
+/* #keyboard { */
+/* grid-template-columns: repeat(3, 1fr); */
+/* gap: 6px; */
+/* } */
+/*  */
+/* .key { */
+/* padding: 10px; */
+/* } */
+/*  */
+/* .summary-box { */
+/* padding: 16px; */
+/* max-height: 80vh; */
+/* } */
+/*  */
+/* #resultsTable th, */
+/* #resultsTable td { */
+/* font-size: 12px; */
+/* padding: 4px; */
+/* } */
+/* } */
+/*  */
+/*  */
+/* /* --------------------- */
+/* 🔹 Celulares pequeños (480px ↓) */
+/* --------------------- */
+/* @media (max-width: 480px) { */
+/* .menu-title { */
+/* font-size: 26px; */
+/* } */
+/*  */
+/* .menu-subtitle { */
+/* font-size: 16px; */
+/* } */
+/*  */
+/* #stage { */
+/* padding: 6px; */
+/* } */
+/*  */
+/* .portrait { */
+/* width: 120px; */
+/* height: 150px; */
+/* } */
+/*  */
+/* .problem-card { */
+/* padding: 10px; */
+/* max-height: 300px; */
+/* } */
+/*  */
+/* #problemText { */
+/* font-size: 15px; */
+/* } */
+/*  */
+/* .key { */
+/* padding: 8px; */
+/* font-size: 16px; */
+/* } */
+/*  */
+/* #finalScroll { */
+/* margin-top: 4px; */
+/* } */
+/* } */
+/*  */
+/*  */
+/* /* --------------------- */
+/* 🔹 Celulares muy pequeños (380px ↓) */
+/* --------------------- */
+/* @media (max-width: 380px) { */
+/* .portrait { */
+/* width: 100px; */
+/* height: 130px; */
+/* } */
+/*  */
+/* .problem-text { */
+/* font-size: 14px; */
+/* } */
+/*  */
+/* #keyboard { */
+/* gap: 4px; */
+/* } */
+/*  */
+/* .key { */
+/* padding: 6px; */
+/* font-size: 14px; */
+/* } */
+/*  */
+/* #resultsTable th, */
+/* #resultsTable td { */
+/* font-size: 10px; */
+/* } */
+/* } */
 
 
-/* ---------------------
-   🔹 Pantallas grandes
-   --------------------- */
-@media (min-width: 1500px) {
-  .portrait {
-    width: 320px;
-    height: 400px;
+/* *********************************************************************** */
+
+/* ============================================================
+   🔧 RESPONSIVE — PREVENIR QUE LAS IMÁGENES TAPEN BOTONES
+   ============================================================ */
+
+/* ================================================
+     ⭐ HUD RESPONSIVE — Para celulares y tablets
+  =================================================== */
+
+@media (max-width: 900px) {
+
+  /* El HUD se hace más compacto y ordenado */
+  #hud {
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
   }
 
-  #centerPanel {
-    width: 45%;
-  }
-
-  .problem-text {
-    font-size: 24px;
-  }
-
-  .key {
-    font-size: 24px;
-    padding: 18px;
+  #hud .hud-box {
+    width: 95%;
+    text-align: center;
+    padding: 8px 5px;
+    font-size: 18px;
   }
 }
 
+@media (max-width: 600px) {
 
-/* ---------------------
-   🔹 Tablets horizontales (1200px ↓)
-   --------------------- */
-@media (max-width: 1200px) {
+  #hud {
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px 0;
+  }
+
+  #hud .hud-box {
+    width: 90%;
+    padding: 6px 5px;
+    font-size: 16px;
+    /* Más pequeño para evitar que tape elementos */
+  }
+}
+
+/* Evitar que el HUD se superponga sobre los botones del problema */
+@media (max-height: 600px) {
+  #hud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  #problemCard {
+    margin-top: 10px !important;
+  }
+}
+
+/* 📱 Celulares verticales pequeños */
+@media (max-width: 600px) {
+
+  /* Hace que el layout se apile en columna */
   #stage {
-    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     gap: 10px;
   }
 
+  /* Los paneles laterales (boss / jugador) se reducen */
   .panel {
-    width: 220px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
   }
 
+  /* Tamaño más pequeño para los retratos */
   .portrait {
-    width: 200px;
-    height: 260px;
+    width: 80px !important;
+    height: 80px !important;
+    background-size: contain !important;
+    background-position: center !important;
+    margin: 5px;
+  }
+
+  /* Nombre debajo de cada retrato */
+  .portrait-name {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  /* 🔥 Caja del problema ocupa 100% del ancho */
+  #problemCard {
+    width: 95% !important;
+    max-width: 500px;
+  }
+
+  /* Texto del problema más legible y sin salir del cuadro */
+  #problemText {
+    font-size: 16px;
+    line-height: 1.25;
+    word-break: break-word;
+  }
+
+  /* El teclado no se achica demasiado */
+  .keyboard {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+  }
+
+  /* Botones */
+  .btn,
+  .submit,
+  .hint {
+    font-size: 16px !important;
+    padding: 10px !important;
+  }
+
+  /* Evita que las imágenes cubran los botones */
+  #centerPanel {
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* 📱 Tablets pequeñas / grandes */
+@media (min-width: 601px) and (max-width: 1024px) {
+
+  .portrait {
+    width: 110px !important;
+    height: 110px !important;
+  }
+
+  #problemCard {
+    width: 90% !important;
+    max-width: 600px;
+  }
+
+  .keyboard {
+    max-width: 500px;
   }
 
   #centerPanel {
-    width: 55%;
-  }
-
-  .problem-card {
-    max-height: 380px;
-  }
-}
-
-
-/* ---------------------
-   🔹 Tablets verticales (980px ↓)
-   --------------------- */
-@media (max-width: 980px) {
-  #hud {
-    font-size: 16px;
-    padding: 8px 12px;
-  }
-
-  #stage {
-    flex-direction: column;
-    justify-content: start;
-    height: auto;
-  }
-
-  .panel {
-    width: 100%;
-  }
-
-  .portrait {
-    margin: auto;
-    width: 200px;
-    height: 250px;
-  }
-
-  #centerPanel {
-    width: 100%;
-    margin-top: 10px;
-  }
-}
-
-
-/* ---------------------
-   🔹 Celulares grandes (780px ↓)
-   --------------------- */
-@media (max-width: 780px) {
-  .menu-title {
-    font-size: 32px;
-  }
-
-  .menu-button.big {
-    font-size: 16px;
-  }
-
-  .portrait {
-    width: 160px;
-    height: 200px;
-  }
-
-  .problem-card {
-    padding: 16px;
-    max-height: 360px;
-  }
-
-  .problem-text {
-    font-size: 18px;
-  }
-
-  .key {
-    font-size: 18px;
-    padding: 12px;
-  }
-}
-
-
-/* ---------------------
-   🔹 Celulares medianos (600px ↓)
-   --------------------- */
-@media (max-width: 600px) {
-  #hud {
-    flex-direction: column;
-    gap: 6px;
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .portrait {
-    width: 140px;
-    height: 180px;
-  }
-
-  #problemText {
-    font-size: 17px;
-  }
-
-  #keyboard {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-  }
-
-  .key {
-    padding: 10px;
-  }
-
-  .summary-box {
-    padding: 16px;
-    max-height: 80vh;
-  }
-
-  #resultsTable th,
-  #resultsTable td {
-    font-size: 12px;
-    padding: 4px;
-  }
-}
-
-
-/* ---------------------
-   🔹 Celulares pequeños (480px ↓)
-   --------------------- */
-@media (max-width: 480px) {
-  .menu-title {
-    font-size: 26px;
-  }
-
-  .menu-subtitle {
-    font-size: 16px;
-  }
-
-  #stage {
-    padding: 6px;
-  }
-
-  .portrait {
-    width: 120px;
-    height: 150px;
-  }
-
-  .problem-card {
-    padding: 10px;
-    max-height: 300px;
-  }
-
-  #problemText {
-    font-size: 15px;
-  }
-
-  .key {
-    padding: 8px;
-    font-size: 16px;
-  }
-
-  #finalScroll {
-    margin-top: 4px;
-  }
-}
-
-
-/* ---------------------
-   🔹 Celulares muy pequeños (380px ↓)
-   --------------------- */
-@media (max-width: 380px) {
-  .portrait {
-    width: 100px;
-    height: 130px;
-  }
-
-  .problem-text {
-    font-size: 14px;
-  }
-
-  #keyboard {
-    gap: 4px;
-  }
-
-  .key {
-    padding: 6px;
-    font-size: 14px;
-  }
-
-  #resultsTable th,
-  #resultsTable td {
-    font-size: 10px;
+    z-index: 10;
   }
 }
