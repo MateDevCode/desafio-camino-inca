@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desafío del Rey Geométrico — Camino a Machu Picchu</title>
+
+<!-- Tu CSS externo -->
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<!-- ============================================================
+     ⭐ PANEL DE NOMBRE (ANTES DE COMENZAR)
+   ============================================================ -->
+<div id="namePanel" class="name-panel">
+  <div class="name-box">
+    <h2>Antes de comenzar…</h2>
+    <p>Ingresa tu nombre de aprendiz:</p>
+    <input id="playerNameInput" type="text" placeholder="Tu nombre..." />
+    <button id="startJourneyBtn" class="btn-start">Iniciar Camino</button>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     🌄 MENÚ PRINCIPAL
+   ============================================================ -->
+<div id="mainMenu">
+
+    <div id="bg-image"></div>
+    <div id="bg-rays"></div>
+    <div id="bg-clouds"></div>
+
+    <!-- CONTROLES DE SONIDO: ICONO + SLIDER (permanece visible) -->
+    <div id="soundControls">
+      <div id="soundToggle" title="Música">🔊</div>
+      <input id="volumeSlider" type="range" min="0" max="1" step="0.01" value="0.8" />
+    </div>
+
+    <div id="menuContent">
+
+        <h1 class="menu-title">☀️ DESAFÍO DEL REY GEOMÉTRICO ☀️</h1>
+        <h2 class="menu-subtitle">El Guardián de los Trazos Sagrados</h2>
+
+        <button id="btnHistory" class="menu-button big">
+            DESAFÍO DEL REY GEOMÉTRICO
+        </button>
+
+        <div id="modeButtons">
+            <button id="btnTraining" class="menu-button small">MODO ENTRENAMIENTO</button>
+            <button id="btnRules" class="menu-button small">REGLAS</button>
+        </div>
+
+        <p class="menu-footer">
+            Una aventura en el mundo de los trazos inspirada en la sabiduría incaica.
+        </p>
+
+    </div>
+</div>
+
+
+<!-- ============================================================
+     ⭐ PANTALLA DEL JUEGO
+   ============================================================ -->
+<div id="gameRoot" class="hidden screen">
+
+    <header id="hud">
+        <div id="hud-level" class="hud-box">Nivel —</div>
+        <div id="hud-points" class="hud-box">Puntos: 0</div>
+        <div id="hud-timer" class="hud-box">Tiempo: 90</div>
+    </header>
+
+    <div id="background"></div>
+
+    <main id="stage">
+
+        <aside class="panel">
+            <div id="bossPortrait" class="portrait"></div>
+            <div id="bossName" class="portrait-name"></div>
+        </aside>
+
+        <div id="centerPanel">
+
+            <div id="dialogue" class="dialogue">—</div>
+
+            <div id="problemCard" class="problem-card">
+                <div id="problemText" class="problem-text">—</div>
+
+                <div id="answerDisplay">Respuesta: <span id="answerValue"></span></div>
+
+                <div id="keyboard" class="keyboard"></div>
+
+                <div class="controls">
+                    <button id="hintBtn" class="btn hint">Pista -10pts</button>
+                    <button id="submitBtn" class="btn submit">Enviar</button>
+                </div>
+            </div>
+
+        </div>
+
+        <aside class="panel">
+            <div id="playerPortrait" class="portrait player"></div>
+            <div id="playerName" class="portrait-name">Aprendiz</div>
+        </aside>
+
+    </main>
+</div>
+
+
+<!-- ============================================================
+     🏁 PANTALLA FINAL
+   ============================================================ -->
+<div id="finalScreen" class="final-screen hidden screen">
+
+    <div class="final-layout">
+
+        <img src="sprites/inti_big.png" class="inti-img" alt="INTI">
+
+        <div class="summary-box">
+            <h2>🏁 Resumen del Camino</h2>
+
+            <p id="finalPoints"></p>
+            <p id="finalBonus"></p>
+            <p id="finalUnlock"></p>
+
+            <div id="finalTableContainer">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>Nivel</th>
+                            <th>Pregunta</th>
+                            <th>Tu Resp.</th>
+                            <th>Correcta</th>
+                            <th>Puntos</th>
+                            <th>Bonus</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody"></tbody>
+                </table>
+            </div>
+
+            <input type="range" id="finalScroll" min="0" max="100" value="0" />
+
+            <button id="playAgainBtn" class="btn-start">Jugar otra vez</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ============================================================
+     🎵 MÚSICA
+   ============================================================ -->
+<audio id="menuMusic" loop>
+  <source src="music/menu-inca.mp3" type="audio/mpeg">
+</audio>
+
+<script src="game.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Editor de Problemas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #1b1b1b;
+    font-family: Arial, sans-serif;
+    color: #fff;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 26px;
+    color: #ffd36b;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    background: #2f2a24;
+    border: 3px solid #d4a02f;
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .sectionTitle {
+    margin-top: 25px;
+    font-size: 22px;
+    color: #ffdf9a;
+    text-shadow: 0 0 5px #000;
+  }
+
+  .box {
+    background: #ffffff;
+    color: #000;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #d4a02f;
+    max-height: 400px;   
+    overflow-y: auto;
+    margin-bottom: 15px;
+  }
+
+  .inputRow {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  textarea {
+    flex: 1 1 auto;
+    padding: 10px;
+    border-radius: 6px;
+    border: 2px solid #c89a2c;
+    font-size: 16px;
+    resize: vertical;
+    min-height: 60px;
+    max-height: 150px;
+  }
+
+  input[type="number"] {
+    width: 80px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 2px solid #c89a2c;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 10px 20px;
+    background: #ffd36b;
+    color: #000;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #ffcc40;
+  }
+
+  .problemItem {
+    padding: 8px;
+    background: #f3f3f3;
+    border-left: 5px solid #d4a02f;
+    margin-bottom: 6px;
+    border-radius: 4px;
+    white-space: normal !important;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    min-height: 70px;
+    line-height: 1.5em;
+  }
+
+  .problemButtons {
+    margin-top: 5px;
+    display: flex;
+    gap: 5px;
+  }
+
+  .problemButtons button {
+    flex: 1;
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  #editorControls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  #editorControls button {
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+
+<h2>📘 Editor de Problemas – Desafío del Rey Geométrico</h2>
+
+<div class="container">
+
+  <!-- SECCIÓN EASY -->
+  <div class="sectionTitle">🟢 Fácil</div>
+  <div class="inputRow">
+    <textarea id="easyQ" placeholder="Escribe el enunciado"></textarea>
+    <input type="number" id="easyA" placeholder="Respuesta" />
+    <button onclick="addProblem('easy')">Añadir</button>
+  </div>
+  <div id="easyBox" class="box"></div>
+
+  <!-- SECCIÓN MEDIUM -->
+  <div class="sectionTitle">🟡 Intermedio</div>
+  <div class="inputRow">
+    <textarea id="medQ" placeholder="Escribe el enunciado"></textarea>
+    <input type="number" id="medA" placeholder="Respuesta" />
+    <button onclick="addProblem('medium')">Añadir</button>
+  </div>
+  <div id="medBox" class="box"></div>
+
+  <!-- SECCIÓN HARD -->
+  <div class="sectionTitle">🔴 Difícil</div>
+  <div class="inputRow">
+    <textarea id="hardQ" placeholder="Escribe el enunciado"></textarea>
+    <input type="number" id="hardA" placeholder="Respuesta" />
+    <button onclick="addProblem('hard')">Añadir</button>
+  </div>
+  <div id="hardBox" class="box"></div>
+
+  <!-- SECCIÓN FINAL -->
+  <div class="sectionTitle">🌞 Final</div>
+  <div class="inputRow">
+    <textarea id="finQ" placeholder="Enunciado del problema final"></textarea>
+    <input type="number" id="finA" placeholder="Respuesta" />
+    <button onclick="addProblem('final')">Añadir</button>
+  </div>
+  <div id="finBox" class="box"></div>
+
+  <!-- BOTONES DE IMPORTAR / EXPORTAR -->
+  <div id="editorControls">
+    <button onclick="importJSON()">📥 Importar JSON</button>
+    <button onclick="exportJSON()">📤 Exportar JSON</button>
+    <button onclick="saveAll()" style="background:#7cff7c;color:#003300;">💾 Guardar Local</button>
+  </div>
+
+</div>
+
+<script>
+const STORAGE_KEY = "desafio_problems_v1";
+let db = { easy:[], medium:[], hard:[], final:[] };
+
+// Escapar caracteres HTML
+function escapeHTML(str){
+  return str.replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;");
+}
+
+// Cargar DB de localStorage
+function loadDB(){
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(raw){
+    try{
+      db = JSON.parse(raw);
+      if(!db.easy) db.easy=[];
+      if(!db.medium) db.medium=[];
+      if(!db.hard) db.hard=[];
+      if(!db.final) db.final=[];
+    }catch(e){ console.error(e); }
+  }
+}
+
+// Refrescar la UI
+function refreshUI(){
+  loadSection("easy", "easyBox");
+  loadSection("medium", "medBox");
+  loadSection("hard", "hardBox");
+  loadSection("final", "finBox");
+}
+
+function loadSection(type, boxId){
+  const box = document.getElementById(boxId);
+  box.innerHTML="";
+  db[type].forEach((p,i)=>{
+    const div = document.createElement("div");
+    div.className="problemItem";
+    div.innerHTML = `<b>${i+1}.</b> ${escapeHTML(p.q)}<br><b>R=</b> ${escapeHTML(p.ans)}`;
+    
+    const btnDiv = document.createElement("div");
+    btnDiv.className="problemButtons";
+    
+    // Editar
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "Editar";
+    editBtn.onclick = ()=>{
+      const newQ = prompt("Editar enunciado:", p.q);
+      const newA = prompt("Editar respuesta:", p.ans);
+      if(newQ!==null && newA!==null){
+        db[type][i] = { q: newQ, ans: newA };
+        refreshUI();
+      }
+    };
+    
+    // Borrar
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "Borrar";
+    delBtn.onclick = ()=>{
+      if(confirm("¿Seguro que quieres borrar este problema?")){
+        db[type].splice(i,1);
+        refreshUI();
+      }
+    };
+    
+    btnDiv.appendChild(editBtn);
+    btnDiv.appendChild(delBtn);
+    div.appendChild(btnDiv);
+    
+    box.appendChild(div);
+  });
+}
+
+// Añadir problema
+function addProblem(type){
+  let q="", ans="";
+  if(type==="easy"){ q=document.getElementById("easyQ").value; ans=document.getElementById("easyA").value; }
+  if(type==="medium"){ q=document.getElementById("medQ").value; ans=document.getElementById("medA").value; }
+  if(type==="hard"){ q=document.getElementById("hardQ").value; ans=document.getElementById("hardA").value; }
+  if(type==="final"){ q=document.getElementById("finQ").value; ans=document.getElementById("finA").value; }
+
+  if(q.trim()==="" || ans.trim()===""){ alert("Completa el enunciado y la respuesta."); return; }
+
+  db[type].push({ q, ans });
+  refreshUI();
+}
+
+// Guardar todo en localStorage
+function saveAll(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+  alert("Guardado con éxito.");
+}
+
+// Exportar JSON (descarga)
+function exportJSON(){
+  const dataStr = JSON.stringify(db, null, 2);
+  const blob = new Blob([dataStr], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "desafio_problems.json";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// Importar JSON
+function importJSON(){
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".json";
+  input.onchange = e=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ev=>{
+      try{
+        const imported = JSON.parse(ev.target.result);
+        if(imported.easy && imported.medium && imported.hard && imported.final){
+          db = imported;
+          refreshUI();
+          alert("JSON importado con éxito.");
+        } else alert("Archivo JSON inválido.");
+      }catch(err){ alert("Error al leer JSON."); console.error(err); }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
+// Inicializar
+loadDB();
+refreshUI();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+{
+  "easy": [
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<BAD = 30°  ;   m<DAC = 50°  ; m<ABD = 10°  ; m<DBC = 50°. Hallar m<DCA",
+      "ans": "30"
+    },
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<BAD = 40°  ;   m<DAC = 70°  ; m<DCA = 30°  ; m<DCB = 20°. Hallar m<DBA",
+      "ans": "10"
+    },
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<ABD = 18°  ;   m<DBC = 12°  ; m<DCB = 24°  ; m<DCA = 18°. Hallar m<DAC",
+      "ans": "30"
+    },
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<ABD = 65°  ;   m<DBC = 15°  ; m<DCB = 5°  ; m<DCA = 20°. Hallar la m<DAB.",
+      "ans": "35"
+    },
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<ABD = 30°  ;   m<BAD = 20°  ; m<DBC = 40°  ; m<DAC = 10°. Hallar m<DCB",
+      "ans": "60"
+    },
+    {
+      "q": "Se tiene un cuadrilátero ABCD, m<ADB = 30°  ;   m<BDC = 20°  ; m<ACD = 30°  ; m<ACB = 70°.Hallar m<ABD.",
+      "ans": "20"
+    }
+  ],
+  "medium": [
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<ABD = 100°  ;   m<DBC = 30°  ; m<BAD = 20°  ; m<DAC = 10°. Hallar m<BCD",
+      "ans": "10"
+    },
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<ABD = 24°  ; m<DBC = 78°  ; m<BCD = 24° , m<DCA = 6°. Hallar m<CAD",
+      "ans": "18"
+    },
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior, <ABD = 48°  ;   m<DBC = 81°  ; m<BCD = 12°  ; m<DCA = 15°. Hallar m<DAC",
+      "ans": "15"
+    },
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior, m<DAB = 20°  ;   m<DAC = 30°  ; m<DCA = 40°  ; m<DCB = 10°. Hallar m<DBC",
+      "ans": "20"
+    },
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<ABD = 10°  ;   m<DBC = 30°  ; m<DCA = 20°  ; m<DCB = 50°. Hallar m<DAC",
+      "ans": "40"
+    },
+    {
+      "q": "Se tiene un cuadrilátero ABCD tal que m<ABD = 91°  ;   m<DBC = 30°  ; m<BCA = 30°  ; m<ACD = 119°. Hallar m<BDA.",
+      "ans": "2"
+    }
+  ],
+  "hard": [
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<ABD = 27°  ;   m<DAC = 18°  ; m<DCA = 57°  ; m<DAB = 24°. Hallar m<DBC.",
+      "ans": "15"
+    },
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<BAD = 48°  ;   m<DAC = 30°  ; m<DCB = 6°  ; m<DBC = 18°. Hallar m<DCA.",
+      "ans": "12"
+    },
+    {
+      "q": "Se tiene un cuadrilátero ABCD tal que m<ABD = 18°  ;   m<DBC = 12°  ; m<BCA = 12°, m<ACD = 18°. Hallar m<BDC",
+      "ans": "42"
+    },
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<ABD = 24°  ;   m<DBC = 39°  ; m<BCA = 84°  ; m<ACD = 42°. Hallar m<BDA",
+      "ans": "27"
+    },
+    {
+      "q": "Se tiene un triángulo equilátero ABC con un  punto D en su interior tal que m<ABD = 42°  ; m<CAD = 6°. Hallar m<DCA",
+      "ans": "12"
+    },
+    {
+      "q": "Se tiene un cuadrilátero ABCD tal que m<ABD = 30°  ;   m<DBC = 18°  ; m<BCA = 48°  ; m<CAD = 12°. Hallar m<ACD",
+      "ans": "18"
+    }
+  ],
+  "final": [
+    {
+      "q": "Se tiene un cuadrilátero ABCD tal que m<ABD = 10°  ;   m<DBC = 4°  ; m<BCA = 56°  ; m<ACD = 74. Hallar m<BDA",
+      "ans": "38"
+    },
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<BAD = 26°  ;   m<DAC = 28°  ; m<DCA = 10°  ; m<DCB = 24°. Hallar m<DBA",
+      "ans": "22"
+    }
+  ]
+}
