@@ -118,6 +118,23 @@ button {
   margin-top: 25px;
   font-size: 14px;
   color: #f6e6bd;
+  /* border: 1px solid red; */
+}
+
+.footer__author {
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #ffe39f;
+  opacity: .9;
+  font-weight: bold;
+
+  border: 2px solid #d4a02f;
+  border-radius: .75rem;
+  padding: .75rem 1rem;
+  background: rgba(0, 0, 0, .4);
+  text-shadow: 2px 2px 2px #000;
+  /* z-index: 10; */
+
 }
 
 #soundToggle {

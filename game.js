@@ -110,6 +110,33 @@ const volumeSlider = document.getElementById("volumeSlider");
 /* ============================================================
    ALERTA INCA
 ============================================================ */
+// function showIncaAlert(msg) {
+// let panel = document.getElementById("incaPanel");
+// if (!panel) {
+// panel = document.createElement("div");
+// panel.id = "incaPanel";
+// panel.style.position = "fixed";
+// panel.style.inset = "0";
+// panel.style.display = "flex";
+// panel.style.justifyContent = "center";
+// panel.style.alignItems = "center";
+// panel.style.background = "rgba(0,0,0,0.65)";
+// panel.style.zIndex = "999999";
+// 
+// panel.innerHTML = `
+// // <div style="background:#3a2b1f;padding:20px;border:4px solid #d4a02f;border-radius:12px;width:340px;text-align:left;color:#ffe7c0";max-height:80vh;overflow-y:auto;white-space:pre-wrap;font-size:15px;
+// <p id="incaMsg"></p>
+// // <button id="incaOK" style="margin-top:12px;padding:10px 20px;background:#d4a02f;color:#000;border-radius:8px;font-weight:bold">Aceptar</button>
+// </div>
+// `;
+// document.body.appendChild(panel);
+// document.getElementById("incaOK").onclick = () => panel.style.display = "none";
+// }
+// document.getElementById("incaMsg").textContent = msg;
+// panel.style.display = "flex";
+// }
+// ************************************
+
 function showIncaAlert(msg) {
   let panel = document.getElementById("incaPanel");
   if (!panel) {
@@ -124,9 +151,28 @@ function showIncaAlert(msg) {
     panel.style.zIndex = "999999";
 
     panel.innerHTML = `
-      <div style="background:#3a2b1f;padding:20px;border:4px solid #d4a02f;border-radius:12px;width:340px;text-align:center;color:#ffe7c0">
+      <div style="
+        background:#3a2b1f;
+        padding:20px;
+        border:4px solid #d4a02f;
+        border-radius:12px;
+        width:360px;
+        max-height:80vh;
+        overflow-y:auto;
+        color:#ffe7c0;
+        white-space:pre-wrap;   /* 👈 AQUÍ SE ACTIVAN LOS SALTOS DE LÍNEA */
+        text-align:left;
+        font-size:15px;
+      ">
         <p id="incaMsg"></p>
-        <button id="incaOK" style="margin-top:12px;padding:10px 20px;background:#d4a02f;color:#000;border-radius:8px;font-weight:bold">Aceptar</button>
+        <button id="incaOK" style="
+          margin-top:12px;
+          padding:10px 20px;
+          background:#d4a02f;
+          color:#000;
+          border-radius:8px;
+          font-weight:bold;
+        ">Cerrar</button>
       </div>
     `;
     document.body.appendChild(panel);
@@ -544,7 +590,34 @@ startJourneyBtn.onclick = () => {
    OTROS MODOS
 ============================================================ */
 document.getElementById("btnTraining").onclick = () => showIncaAlert("Modo Entrenamiento pronto.");
-document.getElementById("btnRules").onclick = () => showIncaAlert("Reglas: completa 9 niveles y gana 50 bonus para ver al INTI.");
+// document.getElementById("btnRules").onclick = () => showIncaAlert(" 9 niveles + 1 nivel final desbloqueable (10). Dificultad creciente  Dificultad creciente:  nivel 1 al 3 (fácil) niveles 4 - 6(Intermedio) niveles 1 - 3(Difícil)")
+document.getElementById("btnRules").onclick = () => showIncaAlert(`
+REGLAS:
+
+📌 Niveles
+• 9 niveles + 1 nivel final desbloqueable (10).
+• Dificultad creciente:
+  - Nivel 1–3: Fácil
+  - Nivel 4–6: Intermedio
+  - Nivel 7–9: Difícil
+• Nivel 10: problema del “Dios Sol”, desafío máximo.
+
+📌 Problemas
+• Problemas geométricos diferentes cada partida.
+• Tiempo por nivel: 1 min 30 seg.
+• Bonus por rapidez:
+   0–30 seg → +30 pts
+  31–60 seg → +20 pts
+  61–90 seg → +10 pts
+  +90 seg     →     0 pts
+
+📌 Puntaje
+• Respuesta correcta: +50 pts.
+• Respuesta incorrecta: 0 pts.
+• Bonus solo del nivel 1–9.
+• Nivel final: sin temporizador ni bonus.
+• Para desbloquear nivel final: completar niveles 1–9 + acumular 50 bonus.
+`);
 
 /* ============================================================
    ARRANQUE

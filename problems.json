@@ -2,6 +2,26 @@
   "easy": [
     {
       "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<BAD = 30°  ;   m<DAC = 50°  ; m<ABD = 10°  ; m<DBC = 50°. Hallar m<DCA",
+      "ans": "10"
+    },
+    {
+      "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<BAD = 30°  ;   m<DAC = 50°  ; m<ABD = 10°  ; m<DBC = 20°. Hallar m<DCA",
+      "ans": "30"
+    },
+    {
+      "q": "Dado un triángulo isósceles ABC donde AB = BC. Sea M un punto interior , tal que m<AMC = 2(m<ABC). Se ubica en punto K en el segmento AM de modo que m<BKM = m<ABC. Hallar BK/(KM+MC)",
+      "ans": "1"
+    },
+    {
+      "q": "Sea ABC un triángulo rectángulo isósceles (Recto en A) de longitud de cateto 1. En la mediatriz del lado BC se ubica un punto K tal que CA = CK. Se ubican los puntos P y Q en los lados AB y AC respectivamente, Si el perímetro de triángulo APQ es 2. Hallar la m<PKQ ",
+      "ans": "45"
+    },
+    {
+      "q": "Dado un triángulo ABC. Se ubican los puntos D y E en las prolongaciones de los lados BC y CA respectivamente, tal que CD = CB , AE = 2AC , BE = AD. Entonces el triángulo ABC es:",
+      "ans": "Rectángulo"
+    },
+    {
+      "q": "Sea ABC un triángulo , tal que m<BAC = 2(m<ACB) , se ubica el punto D en el segmento AC , de modo que AB =DC . Se toma un punto E en el semiplano determinado por la recta AC en el cual está B , cumpliéndose que el triángulo DEC es equilátero. Hallar la m<CBE",
       "ans": "30"
     },
     {
@@ -35,6 +55,10 @@
       "ans": "18"
     },
     {
+      "q": "En un triángulo isósceles ABC de base BC, se ubica el punto K en el lado AC tal que m<CBK= m<KBA y AK=BK+BC.  Hallar la m<BAC ",
+      "ans": "20"
+    },
+    {
       "q": "Se tiene un triángulo ABC con un  punto D en su interior, <ABD = 48°  ;   m<DBC = 81°  ; m<BCD = 12°  ; m<DCA = 15°. Hallar m<DAC",
       "ans": "15"
     },
@@ -59,6 +83,14 @@
     {
       "q": "Se tiene un triángulo ABC con un  punto D en su interior tal que m<BAD = 48°  ;   m<DAC = 30°  ; m<DCB = 6°  ; m<DBC = 18°. Hallar m<DCA.",
       "ans": "12"
+    },
+    {
+      "q": "Dado el triángulo ABC donde m<A=120°. Se traza la bisectriz interior AP y se ubica un punto D en segmento AB de tal forma que satisfacen: AD + AP = DC. Hallar : (m<ACD)/(m<DBP)",
+      "ans": "2"
+    },
+    {
+      "q": "En un triángulo ABC tenemos que m<C= m<A + 90°. El punto D en la prolongación del lado BC es dado tal que AC=AD. Un punto E en el semiplano determinado por la recta BC en el cual no está A es escogido de modo que m<EBC = m<A, m<EDC = (m<A)/2. Hallar:  (m<CED)/(m<ABC)",
+      "ans": "1"
     },
     {
       "q": "Se tiene un cuadrilátero ABCD tal que m<ABD = 18°  ;   m<DBC = 12°  ; m<BCA = 12°, m<ACD = 18°. Hallar m<BDC",
